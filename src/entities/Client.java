@@ -11,21 +11,21 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table ( name = "client")
+@Table(name = "client")
 
 public class Client {
-	
+
 	@Id
 	private int id;
-	
-	@Column ( name = " nom")
+
+	@Column(name = " nom")
 	private String nom;
-	
-	@Column ( name = " prenom")
+
+	@Column(name = " prenom")
 	private String prenom;
 
 	public Client() {
-		
+
 	}
 
 	public int getId() {
@@ -56,8 +56,5 @@ public class Client {
 	public String toString() {
 		return "Client :" + id + " // NOM : " + nom + " //  PRENOM : " + prenom;
 	}
-	
-	
-	
 
 }

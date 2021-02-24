@@ -9,7 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -39,11 +38,15 @@ public class Emprunt {
 	@ManyToOne
 	@JoinColumn(name = "id_client")
 	private Client client;
+	
+	
 
 	@ManyToMany
-	@JoinTable(name = "compo", joinColumns = @JoinColumn(name = "id_emp", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "id_liv", referencedColumnName = " id"))
+	@JoinTable(name = "compo", 
+	joinColumns = @JoinColumn(name = "id_emp",referencedColumnName = "id"), 
+	inverseJoinColumns = @JoinColumn(name = "id_liv", referencedColumnName = " id"))
 
-	// plusieurs livres ont plusieurs emprunts et inversement ( relation n, n)
+	// Plusieurs livres ont plusieurs emprunts et inversement ( relation n, n)
 	private Set<Livre> livres = new HashSet<Livre>();
 
 	public Emprunt() {
@@ -95,5 +98,16 @@ public class Emprunt {
 		return "Emprunt [Id=" + Id + ", date_debut=" + date_debut + ", date_fin=" + date_fin + ", delai=" + delai
 				+ ", id_client=" + client + "]";
 	}
+
+	public Set<Livre> getLivres() {
+		return livres;
+	}
+
+	public void setLivres(Set<Livre> livres) {
+		this.livres = livres;
+	}
+
+
+
 
 }
